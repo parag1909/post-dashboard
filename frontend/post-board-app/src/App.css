@@ -1,0 +1,20 @@
+.nav-bar {
+  background-color: rgb(43, 46, 55);
+}
+
+/* Dashboard  */
+.my-post-user-image {
+  max-width: 60px;
+  max-height: 60px;
+}
+
+.post-image {
+  height: 500px !important;
+  width: 945px;
+  object-fit: cover;
+}
+
+/* new post form  */
+textarea {
+  height: 200px;
+}
