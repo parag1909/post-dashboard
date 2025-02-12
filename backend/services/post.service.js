@@ -1,21 +1,36 @@
 import PostModel from "../models/post.model.js";
 import { v2 as cloudinary } from "cloudinary";
 import logger from "../config/logger.js";
+import { Readable } from "stream";
 
 export class PostService {
-  // Create new post with optional image
+  static async uploadToCloudinary(buffer) {
+    return new Promise((resolve, reject) => {
+      const writeStream = cloudinary.uploader.upload_stream(
+        { folder: "posts", resource_type: "auto" },
+        (error, result) => {
+          if (error) return reject(error);
+          resolve(result);
+        }
+      );
+
+      const readStream = new Readable({
+        read() {
+          this.push(buffer);
+          this.push(null);
+        },
+      });
+
+      readStream.pipe(writeStream);
+    });
+  }
+
   static async createPost(postData, userId, imageFile) {
     try {
       // Handle image upload if provided
       let imageUrl = null;
       if (imageFile) {
-        const uploadResponse = await cloudinary.uploader.upload(
-          imageFile.path,
-          {
-            folder: "posts",
-            resource_type: "auto",
-          }
-        );
+        const uploadResponse = await this.uploadToCloudinary(imageFile.buffer);
         imageUrl = uploadResponse.secure_url;
       }
 
@@ -92,3 +107,4 @@ export class PostService {
     }
   }
 }
+ 

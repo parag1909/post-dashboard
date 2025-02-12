@@ -10,7 +10,7 @@ import multer from "multer";
 const postRouter = express.Router();
 
 const upload = multer({
-  dest: "uploads/",
+  storage: multer.memoryStorage(),
   limits: { fileSize: 5 * 1024 * 1024 },
 });
 
@@ -22,3 +22,4 @@ postRouter.get("/all", authMiddleware, getAllPosts);
 postRouter.get("/", authMiddleware, getPosts);
 
 export default postRouter;
+ 
