@@ -1,21 +1,11 @@
 import { PostService } from "../services/post.service.js";
 import logger from "../config/logger.js";
-import { validatePost } from "../validators/post.validator.js";
 
 export const createPost = async (req, res) => {
   try {
     const { title, content } = req.body;
     const userId = req.user.id;
     const imageFile = req.file;
-
-    // Validate post data
-    const validationErrors = validatePost(title, content);
-    if (validationErrors.length > 0) {
-      return res.status(400).json({
-        success: false,
-        errors: validationErrors,
-      });
-    }
 
     // Create post using service
     const post = await PostService.createPost(

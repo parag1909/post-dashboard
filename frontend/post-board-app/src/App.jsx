@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import MyPosts from "./pages/MyPosts";
 import NewPost from "./pages/NewPost";
 import HomePage from "./pages/HomePage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -20,9 +21,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/my-post" element={<MyPosts />} />
-        <Route path="/new-post" element={<NewPost />} />
-        <Route path="/home-page" element={<HomePage />} />
+        <Route path="/my-post" element={<ProtectedRoute element={<MyPosts />} />}/>
+        <Route path="/new-post" element={<ProtectedRoute element={<NewPost />} />}/>
+        <Route path="/home-page" element={<ProtectedRoute element={<HomePage />} />}/>
       </Routes>
     </AppContextProvider>
   );

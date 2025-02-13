@@ -74,7 +74,7 @@ const MyPosts = () => {
             ))}
           </ul>
 
-          <div className="pagination mt-3">
+          <div className="pagination mb-3">
             <button
               className="btn btn-primary"
               onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
