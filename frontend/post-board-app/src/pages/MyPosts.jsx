@@ -12,6 +12,7 @@ const MyPosts = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
+      setLoading(true);
       try {
         const { data } = await axios.get(
           `${backendURL}/api/posts?page=${currentPage}`,
@@ -65,7 +66,6 @@ const MyPosts = () => {
                         src={post.image}
                         alt={post.title}
                         className="img-fluid post-image"
-                        // style={{ maxWidth: "1024px", maxHeight: "500px" }}
                       />
                     )}
                   </div>
