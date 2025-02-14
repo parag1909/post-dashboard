@@ -42,7 +42,6 @@ export class PostService {
         image: imageUrl,
       });
 
-      console.log("NEw post -------->>>", newPost);
       const savedPost = await newPost.save();
       await savedPost.populate("author", "username name");
 

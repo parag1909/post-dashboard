@@ -61,8 +61,15 @@ const Login = () => {
         navigate("/home-page");
       }
     } catch (error) {
-      console.log(error);
-      notify("Login failed", "error");
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        notify(error.response.data.message, "error");
+      } else {
+        notify("Login failed", "error");
+      }
     } finally {
       setIsLoading(false);
     }

@@ -24,20 +24,20 @@ const Header = () => {
 
   const handleHomeClick = () => {
     if (token) {
-      navigate("/home-page"); // Navigate to home page if logged in
+      navigate("/home-page"); 
     } else {
-      navigate("/"); // Navigate to login if not logged in
+      navigate("/"); 
     }
   };
 
   return (
     <nav className="nav-bar d-flex justify-content-between text-white p-3 align-items-center">
       <div>
-        <div className="flex items-center">
+        <div className="">
           <span className="font-bold text-lg pe-4">Social WebApp</span>
           {token && (
             <button
-              onClick={handleHomeClick} // Use the click handler to navigate programmatically
+              onClick={handleHomeClick} 
               className="text-white text-decoration-none bg-transparent border-0"
             >
               <i className="fa fa-home me-1" aria-hidden="true"></i> Home
@@ -48,7 +48,7 @@ const Header = () => {
 
       <div className="d-flex">
         {/* Search Bar */}
-        <div className="flex items-center">
+        <div className="d-none d-md-block">
           <input
             type="text"
             placeholder="Search Here..."

@@ -68,12 +68,11 @@ const Signup = () => {
         setToken(data.token);
         localStorage.setItem("token", data.token);
         notify("User registered successfully");
-        navigate("/home-page"); // TODO: Show notify and Proper Navigation
+        navigate("/home-page"); 
       } else {
         notify("Signup failed.", "error");
       }
     } catch (error) {
-      console.log(error);
       notify("Signup failed", "error");
     } finally {
       setIsLoading(false);

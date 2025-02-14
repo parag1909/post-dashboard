@@ -28,18 +28,16 @@ export const validateRegistration = (
     minSymbols: 1,
   };
 
-  if (!validator.isStrongPassword(password, passwordValidationOptions)) {
-    errors.push(
-      "Password must be at least 8 characters long and contain uppercase, lowercase, number, and special character"
-    );
-  }
+  // if (!validator.isStrongPassword(password, passwordValidationOptions)) {
+  //   errors.push(
+  //     "Password must be at least 8 characters long and contain uppercase, lowercase, number, and special character"
+  //   );
+  // }
 
   // Password confirmation
   if (password !== confirmPassword) {
     errors.push("Passwords do not match");
   }
-
-  console.log("Errros------", errors);
 
   return errors;
 };

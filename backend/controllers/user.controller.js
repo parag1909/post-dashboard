@@ -16,8 +16,6 @@ export const registerUser = async (req, res) => {
       confirmPassword
     );
 
-    console.log("Validateion Error", validationErrors);
-
     if (validationErrors.length > 0) {
       logger.warn(
         `Registration validation errors: ${validationErrors.join(", ")}`
@@ -56,7 +54,6 @@ export const registerUser = async (req, res) => {
 };
 
 export const loginUser = async (req, res) => {
-  console.log("1");
   try {
     const { username, password } = req.body;
 
