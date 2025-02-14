@@ -73,7 +73,7 @@ const Signup = () => {
         notify("Signup failed.", "error");
       }
     } catch (error) {
-      notify("Signup failed", "error");
+      notify(error.response.data.message, "error");
     } finally {
       setIsLoading(false);
     }
